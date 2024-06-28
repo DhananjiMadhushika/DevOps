@@ -1,4 +1,3 @@
-# Use the official Node.js image as the base image
 FROM node:14
 
 # Set the working directory
@@ -17,4 +16,4 @@ COPY . .
 EXPOSE 8070
 
 # Command to run the backend application
-CMD ["npm", "start"]
+CMD ["node", "server.js"]
