@@ -1,25 +1,12 @@
 version: '3'
 services:
-  mongodb:
-    image: mongo:latest
-    container_name: mongodb
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: Dhananji
-      MONGO_INITDB_ROOT_PASSWORD: Dhanu123
-    volumes:
-      - mongo-data:/data/db
-    ports:
-      - "27017:27017"
-      
   backend:
     build: ./backend
     container_name: backend
     environment:
-      - MONGODB_URL=mongodb://mongodb:27017/salon_db
+      - MONGODB_URL=mongodb+srv://Dhananji:Dhanu123@cluster0.qamgjv7.mongodb.net/salon_db?retryWrites=true&w=majority
     ports:
       - "8070:8070"
-    depends_on:
-      - mongodb
       
   frontend:
     build: ./frontend
@@ -28,6 +15,3 @@ services:
       - "3000:3000"
     depends_on:
       - backend
-
-volumes:
-  mongo-data:
